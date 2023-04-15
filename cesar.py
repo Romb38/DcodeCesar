@@ -3,16 +3,22 @@ NB_ALPHA = 26 #Nombre de lettre dans l'alphabet classique
 ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 
 def output_langues():
-    langues  = os.listdir("./langues/")
+    """
+    Récupère les langues disponibles dans la base de donnée 
+    """
+    langues  = os.listdir("./langues/") #Donne la liste des fichier
     langue_dispo = []
-    for i in langues:
-        if i[-4:] == ".txt":
+    for i in langues: #Pour chaque langue on ne récupère que l'acronyme
+
+        if i[-4:] == ".txt": #On vérifie l'extension du fichier
+            #Le nom de fichier est au format mots_<acronyme>.txt
             j = 0
             while i[j] != "_":
                 j += 1
-            langue_dispo.append(i[j+1:-4])
+            langue_dispo.append(i[j+1:-4]) #Et on l'ajoute aux langues disponibles
         else:
-            print("Le fichier " + i + " n'est pas au bon format !")
+            #ERREUR - EXTENSION DE FICHIER INCORRECT
+            print("ERREUR - output_langue - Le fichier " + i + " n'est pas au bon format !")
         
     return langue_dispo
     
@@ -97,11 +103,14 @@ def compar_mot(mot1,mot2):
     """
     l1 = len(mot1)
     l2 = len(mot2)
-    lg = min([l1,l2])
+    lg = min([l1,l2]) #On récupère le nombre de lettre du mot le plus court
+
     for i in range(0,lg):
+        #On récupère l'ordre des deux lettres courantes
         i1 = ALPHABET.find(mot1[i])
         i2 = ALPHABET.find(mot2[i])
-        if i1<i2:
+
+        if i1<i2: #On les compares
             return -1
         if i1>i2:
             return 1
@@ -109,20 +118,22 @@ def compar_mot(mot1,mot2):
     if l1==l2:
         return 0
     else:
-        return int(abs(l1-l2)/(l1-l2)) 
+        return int(abs(l1-l2)/(l1-l2)) #On normalise le résultat (-1/1)
 
 def dicho(mot,L):
+    """
+    Fait une recherche dichotomique dans une liste de mots triée
+    """
     i,j = 0,len(L)-1
     while i != j:
-        k = (j+i)//2
-        #print(L[k])
-        if compar_mot(mot,L[k]) == 0:
+        k = (j+i)//2 #On regarde le mots du millieu
+        if compar_mot(mot,L[k]) == 0: #Si il est égal on dit qu'il existe
             return True
-        elif compar_mot(mot,L[k]) == -1:
+        elif compar_mot(mot,L[k]) == -1: #Si il est plus petit on regarde dans la première moitiée du dictionnaire
             j = k
-        elif compar_mot(mot,L[k]) == 1:
+        elif compar_mot(mot,L[k]) == 1: #Sinon dans la deuxième moitiée
             i = k+1
-    return L[i] == mot
+    return L[i] == mot #Si enfin la recheche s'arrête sur 1 seul mot, on le compare au mot demandé
 
 
 def open_file(langue):
@@ -142,13 +153,13 @@ def liste_appartenance(tab_mot,langue_donne,langues_dispo):
     """
     appartenance = []
     pc = 0
-    if langue_donne in langues_dispo: #Si la langue existe dans celles 
-        langues = [langue_donne,"NP"]
-        for langue in langues:
+    if langue_donne in langues_dispo: #Si une langue est imposée et qu'elle est dans les langues données
+        langues = [langue_donne,"NP"] #(On rajoute les noms propres communs a toutes les langues)
+        for langue in langues: #On comptes les mots qui appartiennent a cette langues
             compt = 0
             liste_mot = open_file(langue)
             for mot in tab_mot:
-                if exists_mot(mot,liste_mot): #On ne parcours que celle la
+                if exists_mot(mot,liste_mot): #Et on ne parcours que celle la
                     compt += 1
             appartenance.append(compt)
 
@@ -160,7 +171,7 @@ def liste_appartenance(tab_mot,langue_donne,langues_dispo):
             compt = 0
             liste_mot = open_file(langue)
             tab_mot_copy = []
-            for mot in tab_mot:
+            for mot in tab_mot: #Et on compte le nombre de mots qui existe pour chaque langue
                 if exists_mot(mot,liste_mot):
                     compt += 1
                 else:
@@ -168,7 +179,7 @@ def liste_appartenance(tab_mot,langue_donne,langues_dispo):
             
             tab_mot = tab_mot_copy
             
-            pc += 100/len(langues_dispo)
+            pc += 100/len(langues_dispo) #Pourcentage d'avancée dans le calcul
             print(langue + " - Validée - " + str(round(pc)) + "%")
 
             appartenance.append(compt)
@@ -178,6 +189,9 @@ def liste_appartenance(tab_mot,langue_donne,langues_dispo):
 def potentialite(appartenance,tab_mot):
     """
     Donne le pourcentage de chance que la phrase donnée en entrée soit le message décodé
+
+    Pour cela compte le nombre de mot existant dans 1 ou plusieurs langues et renvoie le décodage comptabilisant
+    le plus de mots existants dans les langues disponible/imposée
     """
     
     som = 0 #On fait la somme du nombre de mots appartenant a chaque langues
