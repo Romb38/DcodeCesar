@@ -1,6 +1,6 @@
 # DcodeCesar
- Permet d'encoder et de décoder des messages avec le code Cesar.
- Il y a 3 possibilités
+ Permet d'encoder et de décoder des messages avec le code Cesar. 
+ Il y a 3 possibilités :
 
  ## Encoder un message
  Pour cela sélectionner l'encodage (1) dans le menu
