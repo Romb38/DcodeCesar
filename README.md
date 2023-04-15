@@ -25,11 +25,11 @@
   Récupérez le message décodé avec le décalage donné et le pourcentage de chance que ca soit le bon message
 
   ## Ajouter/Supprimer une langue
-  Pour ajouter une langue, il vous faut un fichier\n
-  > ".txt" 
-  > trié par ordre alphabétique (sinon ca ne marchera pas)\n
-  > Contenant un mot par ligne\n
-
+  Pour ajouter une langue, il vous faut un fichier -->
+  > ".txt" -->
+  > trié par ordre alphabétique (sinon ca ne marchera pas) -->
+  > Contenant un mot par ligne -->
+  -->
   Ensuite sélectionnez l'ajout de langue (4) dans le menu
   Mettez le chemin jusqu'au fichier (SANS LE NOM DU FICHIER DEDANS)
   Puis donnez ensuite le nom du fichier (AVEC L'EXTENSION)
@@ -43,13 +43,13 @@
 
 
  ## Langues disponibles
- > en : Anglais
- > es : Espagnol
- > fr : Francais
- > ge : Allemand
- > it : Italien
+ > en : Anglais -->
+ > es : Espagnol -->
+ > fr : Francais -->
+ > ge : Allemand -->
+ > it : Italien -->
  > NP : Nom Propres (utilisé quelque soit la langue)
- 
+
 #
 MERCI DE VOTRE LECTURE - Romb38
   
