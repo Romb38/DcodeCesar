@@ -1,5 +1,5 @@
 # DcodeCesar
- Permet d'encoder et de décoder des messages avec le code Cesar
+ Permet d'encoder et de décoder des messages avec le code Cesar.
  Il y a 3 possibilités
 
  ## Encoder un message
