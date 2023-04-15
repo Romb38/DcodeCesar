@@ -25,10 +25,10 @@
   Récupérez le message décodé avec le décalage donné et le pourcentage de chance que ca soit le bon message
 
   ## Ajouter/Supprimer une langue
-  Pour ajouter une langue, il vous faut un fichier 
-  -> ".txt" 
-  -> trié par ordre alphabétique (sinon ca ne marchera pas)
-  -> Contenant un mot par ligne
+  Pour ajouter une langue, il vous faut un fichier\n
+  -> ".txt" \n
+  -> trié par ordre alphabétique (sinon ca ne marchera pas)\n
+  -> Contenant un mot par ligne\n
 
   Ensuite sélectionnez l'ajout de langue (4) dans le menu
   Mettez le chemin jusqu'au fichier (SANS LE NOM DU FICHIER DEDANS)

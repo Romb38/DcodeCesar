@@ -86,11 +86,12 @@ def main():
     string += "3 - Bruteforce le décodage\n"
     string += "4 - Ajouter une langue\n"
     string += "5 - Supprimer une langue\n"
+    string += "6 - Langues\n"
     string += "0 - Quitter\n"
-    string += "Choix (1/2/3/4/5/0) : "
+    string += "Choix (1/2/3/4/5/6/0) : "
 
     print(titre)
-    
+
     choix = int(input(string))
     while choix != 0:
         if choix == 1: #Encoder
@@ -116,6 +117,10 @@ def main():
             ajouter_langue()
         elif choix == 5: #Supprimer une langue
             del_langue()
+        elif choix == 6:
+            print("==============")
+            print("Les langues disponibles sont :")
+            print(c.output_langues())
 
         print("==============")
 
