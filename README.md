@@ -1,7 +1,4 @@
 # DcodeCesar
- BruteForce - CodeCesar
-
-# Principe
  Permet d'encoder et de décoder des messages avec le code Cesar
  Il y a 3 possibilités
 
