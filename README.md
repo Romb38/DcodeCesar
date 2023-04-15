@@ -26,9 +26,9 @@
 
   ## Ajouter/Supprimer une langue
   Pour ajouter une langue, il vous faut un fichier\n
-  -> ".txt" \n
-  -> trié par ordre alphabétique (sinon ca ne marchera pas)\n
-  -> Contenant un mot par ligne\n
+  > ".txt" 
+  > trié par ordre alphabétique (sinon ca ne marchera pas)\n
+  > Contenant un mot par ligne\n
 
   Ensuite sélectionnez l'ajout de langue (4) dans le menu
   Mettez le chemin jusqu'au fichier (SANS LE NOM DU FICHIER DEDANS)
@@ -41,6 +41,15 @@
   Sélectionnez ensuite l'option de suppression d'une langue (5) dnas le menu
   Donnez l'acronyme de la langue a supprimer
 
+
+ ## Langues disponibles
+ > en : Anglais
+ > es : Espagnol
+ > fr : Francais
+ > ge : Allemand
+ > it : Italien
+ > NP : Nom Propres (utilisé quelque soit la langue)
+ 
 #
 MERCI DE VOTRE LECTURE - Romb38
   
