@@ -84,11 +84,12 @@ def main():
     string = "1 - Coder un message\n"
     string += "2 - Décoder un message\n"
     string += "3 - Bruteforce le décodage\n"
-    string += "4 - Ajouter une langue\n"
-    string += "5 - Supprimer une langue\n"
-    string += "6 - Langues\n"
+    string += "4 - Bruteforce le décodage (version fréquentielle) - ONLY FR\n"
+    string += "5 - Ajouter une langue\n"
+    string += "6 - Supprimer une langue\n"
+    string += "7 - Langues\n"
     string += "0 - Quitter\n"
-    string += "Choix (1/2/3/4/5/6/0) : "
+    string += "Choix (1/2/3/4/5/6/7/0) : "
 
     print(titre)
 
@@ -113,11 +114,17 @@ def main():
             print("==============")
             print(message_decode)
 
-        elif choix == 4: #Ajouter une langue
+        elif choix == 4: #BruteForce - Scrabble Version
+            message = input(("Message à décoder : "))
+            message_decode = c.brute_force_scrabble(message)
+            print("==============")
+            print(message_decode)
+
+        elif choix == 5: #Ajouter une langue
             ajouter_langue()
-        elif choix == 5: #Supprimer une langue
+        elif choix == 6: #Supprimer une langue
             del_langue()
-        elif choix == 6:
+        elif choix == 7:
             print("==============")
             print("Les langues disponibles sont :")
             print(c.output_langues())

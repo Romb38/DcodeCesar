@@ -238,3 +238,50 @@ def brutforce_decrypt_caesar(message,langue = ""):
     message_dcode = decrypt_cesar(message,decal) #On décode le message
     
     return message_dcode,decal,maxi #On renvoie le message décodé et le décalage nécessaire
+
+
+def score_par_frequence(message):
+    """
+    in :
+    message : str - Message dont on veut calculer le score
+
+    out:
+    score : int - Score du message obtenu par les fréquences du scrabble
+
+    Calcul la potentialité d'un message via la fréquence des lettres donnée par les valeurs du scrabble
+    """
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    score_scrabble = "02210313079010027000039999" #Liste des points du scrabble -1
+    score = 0
+    for lettre in message:
+        if lettre.isalpha():
+            pos_sc = alphabet.index(lettre.lower())
+            score += int(score_scrabble[pos_sc])
+    return score
+
+def brute_force_scrabble(message):
+    """
+    in : 
+    message  : str - Message à décodé
+
+    out : 
+    message : str - Message décodé
+
+    Retrouve un message décalé par le code César par la fréquence des lettres
+    """
+    score = [] #On crée le tableau des scores pour chaques décalage
+    for i in range(NB_ALPHA):
+        potentiel_dcode = decrypt_cesar(message,i)
+        score.append(score_par_frequence(potentiel_dcode))
+
+    pos_min = 0 #On fait une recherche de minimum sur le tableau score
+    score_min = score[0]
+    for i in range(NB_ALPHA):
+        if score[i] < score_min:
+            pos_min = i
+            score_min = score[i]
+    
+    #Le décalage le plus probable est celui avec le moins de score
+    #Plus le score est faible, plus il est probable que le message donné soit celui décodé
+    return decrypt_cesar(message,pos_min),score_min
+
